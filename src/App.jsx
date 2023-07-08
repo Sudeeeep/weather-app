@@ -1,8 +1,10 @@
+import { CurrentWeather } from "./components/CurrentWeather";
+
 function App() {
   return (
-    <>
-      <h1 className="text-red-700">Weather App</h1>
-    </>
+    <div className="container">
+      <CurrentWeather />
+    </div>
   );
 }
 
