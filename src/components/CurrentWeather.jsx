@@ -3,8 +3,9 @@ import staticLogo from "../assets/Shower.png";
 import currentLocationLogo from "../assets/location_on_FILL0_wght400_GRAD0_opsz48.svg";
 import { SearchBar } from "./SearchBar";
 import axios from "axios";
+import propTypes from "prop-types";
 
-export const CurrentWeather = () => {
+export const CurrentWeather = ({ setSearchScreen }) => {
   const [currentLocation, setCurrentLocation] = useState(null);
   const [currentWeather, setCurrentWeather] = useState(null);
 
@@ -32,8 +33,8 @@ export const CurrentWeather = () => {
   }, [currentLocation]);
 
   return (
-    <div className="bg-[#1E213A] text-white w-screen min-h-screen px-6 py-4">
-      <SearchBar />
+    <div className="bg-[#1E213A] text-white min-h-screen px-6 py-4">
+      <SearchBar setSearchScreen={setSearchScreen} />
       <div className="flex flex-col gap-2 items-center mt-10">
         <img src={staticLogo} alt="" className="w-32 mb-6" />
 
@@ -63,4 +64,8 @@ export const CurrentWeather = () => {
       </div>
     </div>
   );
+};
+
+CurrentWeather.propTypes = {
+  setSearchScreen: propTypes.func,
 };
