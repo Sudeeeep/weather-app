@@ -36,8 +36,16 @@ export const CurrentWeather = ({ setSearchScreen }) => {
     <div className="bg-[#1E213A] text-white min-h-screen px-6 py-4">
       <SearchBar setSearchScreen={setSearchScreen} />
       <div className="flex flex-col gap-2 items-center mt-10">
-        <img src={staticLogo} alt="" className="w-32 mb-6" />
-
+        {!currentWeather && (
+          <img src={staticLogo} alt="" className="w-32 mb-6" />
+        )}
+        {currentWeather && (
+          <img
+            src={`https://openweathermap.org/img/wn/${currentWeather.weather[0].icon}@4x.png`}
+            alt=""
+            className="w-38"
+          />
+        )}
         <div>
           {!currentWeather && (
             <span className="font-bold text-7xl mr-2">15</span>
@@ -49,7 +57,12 @@ export const CurrentWeather = ({ setSearchScreen }) => {
           )}
           <span className="text-[#A09FB1] text-xl">℃</span>
         </div>
-        <p className="text-[#A09FB1] text-3xl">Shower</p>
+        {!currentWeather && <p className="text-[#A09FB1] text-3xl">Shower</p>}
+        {currentWeather && (
+          <p className="text-[#A09FB1] text-3xl">
+            {currentWeather.weather[0].main}
+          </p>
+        )}
 
         <div className="flex gap-5 text-[#A09FB1] text-sm">
           <p>today</p>
