@@ -1,37 +1,9 @@
-import { useEffect, useState } from "react";
 import staticLogo from "../assets/Shower.png";
 import currentLocationLogo from "../assets/location_on_FILL0_wght400_GRAD0_opsz48.svg";
 import { SearchBar } from "./SearchBar";
-import axios from "axios";
 import propTypes from "prop-types";
 
-export const CurrentWeather = ({ setSearchScreen }) => {
-  const [currentLocation, setCurrentLocation] = useState(null);
-  const [currentWeather, setCurrentWeather] = useState(null);
-
-  useEffect(() => {
-    if (!currentLocation) {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition((pos) => {
-          setCurrentLocation(pos.coords);
-        });
-      }
-    } else {
-      axios
-        .get(
-          `https://api.openweathermap.org/data/2.5/weather?lat=${
-            currentLocation.latitude
-          }&lon=${currentLocation.longitude}&appid=${
-            import.meta.env.VITE_API_KEY
-          }&units=metric`
-        )
-        .then((res) => {
-          console.log(res.data);
-          setCurrentWeather(res.data);
-        });
-    }
-  }, [currentLocation]);
-
+export const CurrentWeather = ({ setSearchScreen, currentWeather }) => {
   return (
     <div className="bg-[#1E213A] text-white min-h-screen px-6 py-4">
       <SearchBar setSearchScreen={setSearchScreen} />
@@ -81,4 +53,5 @@ export const CurrentWeather = ({ setSearchScreen }) => {
 
 CurrentWeather.propTypes = {
   setSearchScreen: propTypes.func,
+  currentWeather: propTypes.object,
 };
