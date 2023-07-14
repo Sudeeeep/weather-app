@@ -7,7 +7,7 @@ function App() {
   const [searchScreen, setSearchScreen] = useState(false);
   const [currentLocation, setCurrentLocation] = useState(null);
   const [currentWeather, setCurrentWeather] = useState(null);
-  const [location, setLocation] = useState(null);
+  const [location, setLocation] = useState("");
 
   useEffect(() => {
     if (!location && !currentLocation) {
@@ -31,15 +31,34 @@ function App() {
           setCurrentWeather(res.data);
         });
     }
+    if (location) {
+      axios
+        .get(
+          `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${
+            import.meta.env.VITE_API_KEY
+          }&units=metric`
+        )
+        .then((res) => setCurrentWeather(res.data));
+    }
   }, [location, currentLocation]);
 
   return (
     <div className="container max-w-full">
-      {searchScreen && <SearchLocation setSearchScreen={setSearchScreen} />}
+      {searchScreen && (
+        <SearchLocation
+          setSearchScreen={setSearchScreen}
+          location={location}
+          setLocation={setLocation}
+          setCurrentLocation={setCurrentLocation}
+          setCurrentWeather={setCurrentWeather}
+        />
+      )}
       {!searchScreen && (
         <CurrentWeather
           setSearchScreen={setSearchScreen}
           currentWeather={currentWeather}
+          setLocation={setLocation}
+          setCurrentLocation={setCurrentLocation}
         />
       )}
     </div>

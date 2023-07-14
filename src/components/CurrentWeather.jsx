@@ -3,10 +3,19 @@ import currentLocationLogo from "../assets/location_on_FILL0_wght400_GRAD0_opsz4
 import { SearchBar } from "./SearchBar";
 import propTypes from "prop-types";
 
-export const CurrentWeather = ({ setSearchScreen, currentWeather }) => {
+export const CurrentWeather = ({
+  setSearchScreen,
+  currentWeather,
+  setLocation,
+  setCurrentLocation,
+}) => {
   return (
     <div className="bg-[#1E213A] text-white min-h-screen px-6 py-4">
-      <SearchBar setSearchScreen={setSearchScreen} />
+      <SearchBar
+        setSearchScreen={setSearchScreen}
+        setLocation={setLocation}
+        setCurrentLocation={setCurrentLocation}
+      />
       <div className="flex flex-col gap-2 items-center mt-10">
         {!currentWeather && (
           <img src={staticLogo} alt="" className="w-32 mb-6" />
@@ -54,4 +63,6 @@ export const CurrentWeather = ({ setSearchScreen, currentWeather }) => {
 CurrentWeather.propTypes = {
   setSearchScreen: propTypes.func,
   currentWeather: propTypes.object,
+  setLocation: propTypes.func,
+  setCurrentLocation: propTypes.func,
 };
