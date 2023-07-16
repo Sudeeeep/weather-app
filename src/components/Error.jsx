@@ -7,7 +7,7 @@ export const ErrorPage = ({ error, setError }) => {
 
   if (error.code === "ERR_NETWORK") {
     return (
-      <div className="bg-[#6E707A] text-white absolute top-1/2 min-w-full px-6 py-2">
+      <div className="bg-[#6E707A] text-white absolute min-w-full px-6 py-2">
         <div className="text-end">
           <span onClick={handleClick}>X</span>
         </div>
@@ -20,7 +20,7 @@ export const ErrorPage = ({ error, setError }) => {
   }
   if (error.code === "ERR_BAD_REQUEST") {
     return (
-      <div className="bg-[#6E707A] text-white absolute top-1/2 min-w-full px-6 py-2">
+      <div className="bg-[#6E707A] text-white absolute min-w-full px-6 py-2">
         <div className="text-end">
           <span onClick={handleClick}>X</span>
         </div>
