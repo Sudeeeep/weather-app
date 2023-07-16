@@ -5,17 +5,27 @@ export const SearchBar = ({
   setSearchScreen,
   setLocation,
   setCurrentLocation,
+  error,
+  setError,
 }) => {
   function handleClick() {
     setLocation(null);
     setCurrentLocation(null);
+    if (error) {
+      setError(null);
+    }
   }
 
   return (
     <div className="flex justify-between">
       <button
         className="bg-[#6E707A] px-3"
-        onClick={() => setSearchScreen(true)}
+        onClick={() => {
+          setSearchScreen(true);
+          if (error) {
+            setError(null);
+          }
+        }}
       >
         Search for places
       </button>
@@ -30,4 +40,6 @@ SearchBar.propTypes = {
   setSearchScreen: propTypes.func,
   setLocation: propTypes.func,
   setCurrentLocation: propTypes.func,
+  error: propTypes.object,
+  setError: propTypes.func,
 };

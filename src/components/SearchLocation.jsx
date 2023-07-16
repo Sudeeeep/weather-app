@@ -5,7 +5,6 @@ export const SearchLocation = ({
   setSearchScreen,
   setLocation,
   setCurrentLocation,
-  setCurrentWeather,
   location,
 }) => {
   const [searchLocation, setSearchLocation] = useState("");
@@ -16,7 +15,6 @@ export const SearchLocation = ({
     console.log(searchLocation);
     setLocation(searchLocation);
     setCurrentLocation(null);
-    setCurrentWeather(null);
     setSearchScreen(false);
   }
 

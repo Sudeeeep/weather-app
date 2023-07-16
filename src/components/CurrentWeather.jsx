@@ -8,6 +8,8 @@ export const CurrentWeather = ({
   currentWeather,
   setLocation,
   setCurrentLocation,
+  error,
+  setError,
 }) => {
   return (
     <div className="bg-[#1E213A] text-white min-h-screen px-6 py-4">
@@ -15,6 +17,8 @@ export const CurrentWeather = ({
         setSearchScreen={setSearchScreen}
         setLocation={setLocation}
         setCurrentLocation={setCurrentLocation}
+        error={error}
+        setError={setError}
       />
       <div className="flex flex-col gap-2 items-center mt-10">
         {!currentWeather && (
@@ -65,4 +69,6 @@ CurrentWeather.propTypes = {
   currentWeather: propTypes.object,
   setLocation: propTypes.func,
   setCurrentLocation: propTypes.func,
+  error: propTypes.object,
+  setError: propTypes.func,
 };

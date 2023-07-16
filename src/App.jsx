@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import { CurrentWeather } from "./components/CurrentWeather";
 import { SearchLocation } from "./components/SearchLocation";
 import axios from "axios";
+import { ErrorPage } from "./components/Error";
 
 function App() {
   const [searchScreen, setSearchScreen] = useState(false);
   const [currentLocation, setCurrentLocation] = useState(null);
   const [currentWeather, setCurrentWeather] = useState(null);
   const [location, setLocation] = useState("");
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     if (!location && !currentLocation) {
@@ -29,6 +31,12 @@ function App() {
         .then((res) => {
           console.log(res.data);
           setCurrentWeather(res.data);
+        })
+        .catch((err) => {
+          setError(err);
+          setTimeout(() => {
+            setError(null);
+          }, 5000);
         });
     }
     if (location) {
@@ -38,12 +46,19 @@ function App() {
             import.meta.env.VITE_API_KEY
           }&units=metric`
         )
-        .then((res) => setCurrentWeather(res.data));
+        .then((res) => setCurrentWeather(res.data))
+        .catch((err) => {
+          setError(err);
+          setTimeout(() => {
+            setError(null);
+          }, 5000);
+        });
     }
   }, [location, currentLocation]);
 
   return (
-    <div className="container max-w-full">
+    <div className="container max-w-full relative">
+      {error && <ErrorPage error={error} setError={setError} />}
       {searchScreen && (
         <SearchLocation
           setSearchScreen={setSearchScreen}
@@ -59,6 +74,8 @@ function App() {
           currentWeather={currentWeather}
           setLocation={setLocation}
           setCurrentLocation={setCurrentLocation}
+          error={error}
+          setError={setError}
         />
       )}
     </div>
