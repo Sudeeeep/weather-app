@@ -4,6 +4,7 @@ import { SearchLocation } from "./components/SearchLocation";
 import axios from "axios";
 import { ErrorPage } from "./components/Error";
 import { Highlights } from "./components/Highlights";
+import { Forecast } from "./components/Forecast";
 
 function App() {
   const [searchScreen, setSearchScreen] = useState(false);
@@ -79,6 +80,7 @@ function App() {
           setError={setError}
         />
       )}
+      <Forecast />
       <Highlights currentWeather={currentWeather} />
     </div>
   );
