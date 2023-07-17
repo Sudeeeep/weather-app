@@ -5,21 +5,18 @@ export const SearchLocation = ({
   setSearchScreen,
   setLocation,
   setCurrentLocation,
-  location,
 }) => {
   const [searchLocation, setSearchLocation] = useState("");
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(location);
-    console.log(searchLocation);
     setLocation(searchLocation);
     setCurrentLocation(null);
     setSearchScreen(false);
   }
 
   return (
-    <div className="bg-[#1E213A] text-white min-h-screen px-6 py-2 flex-wrap">
+    <div className="bg-[#1E213A] text-white min-h-screen px-6 py-2 flex-wrap sm:row-span-2">
       <div className="text-end mb-4">
         <span
           onClick={() => {

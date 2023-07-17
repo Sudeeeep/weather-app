@@ -12,7 +12,7 @@ export const CurrentWeather = ({
   setError,
 }) => {
   return (
-    <div className="bg-[#1E213A] text-white min-h-screen px-6 py-4">
+    <div className="bg-[#1E213A] text-white min-h-screen px-6 py-4 sm:row-span-2">
       <SearchBar
         setSearchScreen={setSearchScreen}
         setLocation={setLocation}
@@ -22,16 +22,16 @@ export const CurrentWeather = ({
       />
       <div className="flex flex-col gap-2 items-center mt-10">
         {!currentWeather && (
-          <img src={staticLogo} alt="" className="w-32 mb-6" />
+          <img src={staticLogo} alt="" className="w-32 mb-6 sm:mt-16" />
         )}
         {currentWeather && (
           <img
             src={`https://openweathermap.org/img/wn/${currentWeather.weather[0].icon}@4x.png`}
             alt=""
-            className="w-38"
+            className="w-38 sm:mt-16"
           />
         )}
-        <div>
+        <div className="sm:mt-4 sm:mb-2">
           {!currentWeather && (
             <span className="font-bold text-7xl mr-2">15</span>
           )}
@@ -42,9 +42,11 @@ export const CurrentWeather = ({
           )}
           <span className="text-[#A09FB1] text-xl">℃</span>
         </div>
-        {!currentWeather && <p className="text-[#A09FB1] text-3xl">Shower</p>}
+        {!currentWeather && (
+          <p className="text-[#A09FB1] text-3xl sm:mb-20">Shower</p>
+        )}
         {currentWeather && (
-          <p className="text-[#A09FB1] text-3xl">
+          <p className="text-[#A09FB1] text-3xl sm:mb-20">
             {currentWeather.weather[0].main}
           </p>
         )}

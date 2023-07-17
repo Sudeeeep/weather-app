@@ -81,7 +81,7 @@ function App() {
   }, [location, currentLocation]);
 
   return (
-    <div className="container max-w-full relative">
+    <div className="container max-w-full relative sm:grid sm:grid-cols-[40%,60%] ">
       {error && <ErrorPage error={error} setError={setError} />}
       {searchScreen && (
         <SearchLocation
