@@ -10,6 +10,7 @@ function App() {
   const [searchScreen, setSearchScreen] = useState(false);
   const [currentLocation, setCurrentLocation] = useState(null);
   const [currentWeather, setCurrentWeather] = useState(null);
+  const [forecast, setForecast] = useState(null);
   const [location, setLocation] = useState("");
   const [error, setError] = useState(null);
 
@@ -31,7 +32,6 @@ function App() {
           }&units=metric`
         )
         .then((res) => {
-          console.log(res.data);
           setCurrentWeather(res.data);
         })
         .catch((err) => {
@@ -39,6 +39,18 @@ function App() {
           setTimeout(() => {
             setError(null);
           }, 5000);
+        });
+
+      axios
+        .get(
+          `https://api.openweathermap.org/data/2.5/forecast?lat=${
+            currentLocation.latitude
+          }&lon=${currentLocation.longitude}&appid=${
+            import.meta.env.VITE_API_KEY
+          }&units=metric`
+        )
+        .then((res) => {
+          setForecast(res.data.list);
         });
     }
     if (location) {
@@ -54,6 +66,16 @@ function App() {
           setTimeout(() => {
             setError(null);
           }, 5000);
+        });
+
+      axios
+        .get(
+          `https://api.openweathermap.org/data/2.5/forecast?q=${location}&appid=${
+            import.meta.env.VITE_API_KEY
+          }&units=metric`
+        )
+        .then((res) => {
+          setForecast(res.data.list);
         });
     }
   }, [location, currentLocation]);
@@ -80,7 +102,7 @@ function App() {
           setError={setError}
         />
       )}
-      <Forecast />
+      <Forecast forecast={forecast} />
       <Highlights currentWeather={currentWeather} />
     </div>
   );
