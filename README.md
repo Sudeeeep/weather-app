@@ -2,26 +2,6 @@
 
 <h1 align="center">Weather App</h1>
 
-<div align="center">
-   Solution for a challenge from  <a href="http://devchallenges.io" target="_blank">Devchallenges.io</a>.
-</div>
-
-<div align="center">
-  <h3>
-    <a href="https://weather-z-app.vercel.app/">
-      Demo
-    </a>
-    <span> | </span>
-    <a href="https://devchallenges.io/solutions/HffyhZ8xxQpvWjKuHZS2">
-      Solution
-    </a>
-    <span> | </span>
-    <a href="https://devchallenges.io/challenges/mM1UIenRhK808W8qmLWv">
-      Challenge
-    </a>
-  </h3>
-</div>
-
 <!-- TABLE OF CONTENTS -->
 
 ## Table of Contents
@@ -31,7 +11,6 @@
 - [Features](#features)
 - [How to use](#how-to-use)
 - [Contact](#contact)
-- [Acknowledgements](#acknowledgements)
 
 <!-- OVERVIEW -->
 
@@ -50,7 +29,9 @@
 
 <!-- List the features of your application or follow the template. Don't share the figma file here :) -->
 
-This application/site was created as a submission to a [DevChallenges](https://devchallenges.io/challenges) challenge. The [challenge](https://devchallenges.io/challenges/Bu3G2irnaXmfwQ8sZkw8) was to build an application to complete the given user stories.
+- A simple weather app created using React.js
+- Uses [OpenWeather API](https://openweathermap.org/api) to fetch weather details.
+- Displays weather details such as current temperature, 5-day weather forecast, and more details based on user location.
 
 ## How To Use
 
