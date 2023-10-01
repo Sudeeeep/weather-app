@@ -53,3 +53,4 @@ $ npm run dev
 ## Contact
 
 - GitHub [@Sudeeeep](https://github.com/Sudeeeep)
+- Linkedin [@Sudeep Nair](https://www.linkedin.com/in/sudeep-nair-1295a8201)
